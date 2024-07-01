@@ -1,4 +1,4 @@
-# techChallenge FIAP - G24
+# techChallenge FIAP - G24 FASE 2
 
 API desenvolvida para controle de pedidos de uma lanchonete
 
