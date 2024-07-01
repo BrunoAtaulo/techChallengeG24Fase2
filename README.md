@@ -47,8 +47,3 @@ Senha: Pa55w0rd2021
 Base de Dados: LancheRapidoBD
 
 ```
-
-
-
-
-
