@@ -12,5 +12,9 @@ namespace Domain.Interfaces
 
         Task<bool> UpdatePedidoAsync(Pedido pedido);
         Task<Pedido> GetPedidosByIdAsync(int idPedido);
+
+        Task<Pedido?> GetPedidoById(int idPedido);
+
+        Task UpdatePedido(Pedido pedido);
     }
 }
