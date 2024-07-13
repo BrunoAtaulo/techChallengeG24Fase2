@@ -1,9 +1,10 @@
-# techChallenge FIAP - G24
+# techChallenge FIAP - G24 FASE 2
 
-API desenvolvida para controle de pedidos de uma lanchonete
+API desenvolvida para controle de pedidos de uma lanchonete utilizando Kubernetes e refatoração do código seguindo padrões clean code.
 
 
 - Miro: [Dashboard Miro](https://miro.com/app/board/uXjVKQl5ank=/?share_link_id=2259608060)
+- Vídeo: 
 
 
 ## Grupo 24 - Integrantes
@@ -17,8 +18,11 @@ Franciele RM 355456</br>
 Bruno - RM355476</br>
 Cesar P Moroni RM355921</br>
 
+## Desenho da arquiterura
 
+Desenho com detalhes da infraestrutura do software
 
+![Arquitetura](diagrama.png)
 
 Para executar esta solução, você deve entrar na pasta raíz e executar o comando:
 ```
