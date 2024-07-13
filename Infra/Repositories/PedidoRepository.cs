@@ -46,6 +46,24 @@ namespace Infra.Repositories
             return await _context.SaveChangesAsync() > 0;
         }
 
+        public async Task<Pedido?> GetPedidoById(int idPedido)
+        {
+            // verifica se o DbSet Pedido não é nulo.
+            if (_context.Pedidos is not null)
+                // retorna o primeiro pedido que corresponde ao idPedido ou null se não encontrar.
+                return await _context.Pedidos.FirstOrDefaultAsync(p => p.Id == idPedido);
+            // retorna null se o DbSet Pedido for nulo.
+            return null;
+        }
+
+        public async Task UpdatePedido(Pedido pedido)
+        {
+            // marca o estado do pedido como modificado.
+            _context.Entry(pedido).State = EntityState.Modified;
+            // salva as alterações no banco de dados de forma assíncrona.
+            await _context.SaveChangesAsync();
+        }
+
 
     }
 

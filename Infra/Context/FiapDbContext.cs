@@ -13,11 +13,9 @@ namespace Infra.Context
 
         public DbSet<Pedido> Pedidos { get; set; }
 
-        
+        public DbSet<Pagamento>? Pagamento { get; set; }
 
         public DbSet<PedidoProduto> PedidoProdutos { get; set; }
-
-        
 
         public DbSet<Produto> Produtos { get; set; }
 

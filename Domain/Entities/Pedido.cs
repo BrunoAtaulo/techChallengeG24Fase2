@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -26,6 +27,10 @@ namespace Domain.Entities
         public DateTime DataPedido { get; set; }
         public DateTime? DataAtualizacao { get; set; }
         public List<Produto> Produtos { get; set; }
+
+        [JsonProperty("statusPedido")]
+        [Required(ErrorMessage = "O status do pedido é obrigatório")]
+        public string? StatusPedido { get; set; }
 
         #region Validations
         //public void Validate()
