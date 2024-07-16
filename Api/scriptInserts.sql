@@ -156,3 +156,9 @@ VALUES
 (1, 12, 2, 2),
 (1, 13, 3, 3);
 
+-- Inserir dados na tabela Pagamentos
+
+INSERT INTO Pagamento (StatusPagamento, ValorPagamento, MetodoPagamento, DataPagamento, IdPedido)
+VALUES ('Pendente', 1.00, 'QRCode', GETDATE(), 1);
+VALUES ('Pendente', 1.00, 'QRCode', GETDATE(), 2);
+VALUES ('Pendente', 1.00, 'QRCode', GETDATE(), 3);
