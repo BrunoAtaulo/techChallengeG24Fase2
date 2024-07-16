@@ -98,6 +98,41 @@ namespace Infra.Migrations
                     b.ToTable("ComboProdutos");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Pagamento", b =>
+                {
+                    b.Property<int>("IdPagamento")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdPagamento"));
+
+                    b.Property<DateTime>("DataPagamento")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IdPedido")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MetodoPagamento")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<int?>("PedidoId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("StatusPagamento")
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
+
+                    b.Property<float>("ValorPagamento")
+                        .HasColumnType("real");
+
+                    b.HasKey("IdPagamento");
+
+                    b.HasIndex("PedidoId");
+
+                    b.ToTable("Pagamentos");
+                });
+
             modelBuilder.Entity("Domain.Entities.Pedido", b =>
                 {
                     b.Property<int>("Id")
@@ -120,6 +155,11 @@ namespace Infra.Migrations
 
                     b.Property<int>("PedidoStatusId")
                         .HasColumnType("int");
+
+                    b.Property<string>("StatusPedido")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("nvarchar(250)");
 
                     b.HasKey("Id");
 
@@ -208,6 +248,15 @@ namespace Infra.Migrations
                     b.Navigation("Combo");
 
                     b.Navigation("Produto");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Pagamento", b =>
+                {
+                    b.HasOne("Domain.Entities.Pedido", "Pedido")
+                        .WithMany()
+                        .HasForeignKey("PedidoId");
+
+                    b.Navigation("Pedido");
                 });
 
             modelBuilder.Entity("Domain.Entities.Pedido", b =>

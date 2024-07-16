@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Infra.Migrations
 {
     /// <inheritdoc />
-    public partial class initialEstrutura : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -52,7 +52,8 @@ namespace Infra.Migrations
                     PedidoStatusId = table.Column<int>(type: "int", nullable: false),
                     PedidoPagamentoId = table.Column<int>(type: "int", nullable: false),
                     DataPedido = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DataAtualizacao = table.Column<DateTime>(type: "datetime2", nullable: true)
+                    DataAtualizacao = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    StatusPedido = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -63,6 +64,29 @@ namespace Infra.Migrations
                         principalTable: "Clientes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Pagamentos",
+                columns: table => new
+                {
+                    IdPagamento = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    StatusPagamento = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    ValorPagamento = table.Column<float>(type: "real", nullable: false),
+                    MetodoPagamento = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: true),
+                    DataPagamento = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    IdPedido = table.Column<int>(type: "int", nullable: false),
+                    PedidoId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Pagamentos", x => x.IdPagamento);
+                    table.ForeignKey(
+                        name: "FK_Pagamentos_Pedidos_PedidoId",
+                        column: x => x.PedidoId,
+                        principalTable: "Pedidos",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -157,6 +181,11 @@ namespace Infra.Migrations
                 column: "ProdutoId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Pagamentos_PedidoId",
+                table: "Pagamentos",
+                column: "PedidoId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PedidoProdutos_ComboId",
                 table: "PedidoProdutos",
                 column: "ComboId");
@@ -187,6 +216,9 @@ namespace Infra.Migrations
         {
             migrationBuilder.DropTable(
                 name: "ComboProdutos");
+
+            migrationBuilder.DropTable(
+                name: "Pagamentos");
 
             migrationBuilder.DropTable(
                 name: "PedidoProdutos");
