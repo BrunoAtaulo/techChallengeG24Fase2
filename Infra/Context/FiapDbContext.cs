@@ -13,7 +13,7 @@ namespace Infra.Context
 
         public DbSet<Pedido> Pedidos { get; set; }
 
-        public DbSet<Pagamento>? Pagamento { get; set; }
+        public DbSet<Pagamento> Pagamentos { get; set; }
 
         public DbSet<PedidoProduto> PedidoProdutos { get; set; }
 
@@ -28,8 +28,8 @@ namespace Infra.Context
 
 
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder options)
-        //=> options.UseSqlServer("Server=localhost,1433;Database=LancheRapidoBD;User Id=SA;Password=Pa55w0rd2021;MultipleActiveResultSets=true");
+      //  protected override void OnConfiguring(DbContextOptionsBuilder options)
+      //  => options.UseSqlServer("Server=localhost,1433;Database=LancheRapidoBD;User Id=SA;Password=Pa55w0rd2021;TrustServerCertificate=true");
 
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)
         {

@@ -11,6 +11,8 @@ namespace Infra
             services.AddScoped<IClienteRepository, ClientesRepository>();
             services.AddScoped<IPedidoRepository, PedidoRepository>();
             services.AddScoped<IProdutosRepository, ProdutosRepository>();
+            services.AddScoped<IPagamentoRepository, PagamentoRepository>();
+            
         }
     }
 }
