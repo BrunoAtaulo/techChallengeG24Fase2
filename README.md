@@ -22,7 +22,7 @@ Cesar P Moroni RM355921</br>
 
 Desenho com detalhes da infraestrutura do software
 
-![Arquitetura](diagrama.png)
+![Arquitetura](assets/diagrama.png)
 
 Para executar esta solução, você deve entrar na pasta raíz e executar o comando:
 ```
@@ -40,6 +40,30 @@ Esse comando irá ler o arquivo <b>docker-compose.yml</b> que está na mesma pas
  
 <b>API</b>: http://localhost:5000/swagger/index.html
 </br>
+
+![Swagger](assets/imagem1.png)
+
+
+
+No endpoint GET/pedidos, já existe alguns pedidos criados para testes</br>
+Liste todos os pedidos realizadose escolha um idPedido com o status RECEBIDO.
+
+
+![Swagger](assets/imagem2.png)</br>
+![Swagger](assets/imagem3.png)
+
+
+
+## Obtenha o QRCode para pagamento do pedido no Mercado Pago.
+
+Crie um pagamento para um pedido que esteja com o status RECEBIDO.
+![Swagger](assets/imagem4.png)
+
+
+Obtenha o QRCode para pagamento do pedido no Mercado Pago.
+
+![Swagger](assets/imagem5.png)
+
 
 </br>
 </br>

@@ -1,12 +1,12 @@
-﻿using Domain.Base;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Domain.Base;
 using Domain.Entities;
 using Domain.Entities.Output;
 using Domain.Interfaces;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace Application.Interfaces
 {
@@ -77,7 +77,7 @@ namespace Application.Interfaces
             if (pagamento == null)
                 return null;
 
-            double valorPagamento = (double)Math.Round(pagamento.ValorPagamento, 2);
+           double valorPagamento = (double)Math.Round(pagamento.ValorPagamento, 2);
 
             var payLoad = new PayloadQRCodeOutput()
             {
@@ -100,28 +100,50 @@ namespace Application.Interfaces
                 {
                     id = _sponsorIdMercadoPago
                 },
-                title = string.Format("Pedido_{0}_Pagamento_{1}", pagamento.IdPedido,pagamento.IdPagamento),
+                title = string.Format("Pedido_{0}_Pagamento_{1}", pagamento.IdPedido, pagamento.IdPagamento),
                 total_amount = valorPagamento
             };
+
+              // Verificar campos nulos
+                if (string.IsNullOrEmpty(payLoad.description) ||
+                    string.IsNullOrEmpty(payLoad.external_reference) ||
+                    string.IsNullOrEmpty(payLoad.title) ||
+                    payLoad.total_amount <= 0 ||
+                    payLoad.items == null || payLoad.items.Count == 0 ||
+                    string.IsNullOrEmpty(payLoad.items[0].title) ||
+                    string.IsNullOrEmpty(payLoad.items[0].description) ||
+                    payLoad.items[0].unit_price <= 0 ||
+                    payLoad.items[0].quantity <= 0 ||
+                    string.IsNullOrEmpty(payLoad.items[0].unit_measure) ||
+                    payLoad.items[0].total_amount <= 0)
+                {
+                    throw new ArgumentException("Campos obrigatórios estão faltando ou inválidos no payload.");
+                }
 
             var qrCode = await CriarOrdemPagamentoMercadoPago(payLoad);
             return qrCode;
         }
 
-        private async Task<QRCodeOutput> CriarOrdemPagamentoMercadoPago(PayloadQRCodeOutput payLoad)
+       private async Task<QRCodeOutput> CriarOrdemPagamentoMercadoPago(PayloadQRCodeOutput payLoad)
         {
             var client = new HttpClient();
             var urlQrCode = _baseUrlMercadoPago + _pathCriarOrdemMercadoPago;
             var request = new HttpRequestMessage(HttpMethod.Put, urlQrCode);
             request.Headers.Add("Authorization", _authorizationMercadoPago);
             var json = JsonConvert.SerializeObject(payLoad);
-            var content = new StringContent(json, null, "application/json");
+            var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
             request.Content = content;
             var response = await client.SendAsync(request);
+            if (!response.IsSuccessStatusCode)
+            {
+                var error = await response.Content.ReadAsStringAsync();
+                throw new Exception($"Erro ao criar QRCode: {error}");
+            }
             var responseJson = await response.Content.ReadAsStringAsync();
             var qrcodeOutput = JsonConvert.DeserializeObject<QRCodeOutput>(responseJson);
             return qrcodeOutput;
         }
+
 
         public async Task ProcessarNotificacaoPagamento(long id_merchant_order)
         {

@@ -5,6 +5,12 @@ services:
         image: ${DOCKER_REGISTRY-}api
         environment:
             - DATABASE=Data Source=ms-sql-server;Initial Catalog=LancheRapidoBD;Encrypt=false;User ID=SA;Password=Pa55w0rd2021;Trusted_Connection=False; TrustServerCertificate=True;
+            - MERCADO_PAGO_BASE_URL=https://api.mercadopago.com
+            - MERCADO_PAGO_CRIAR_QR_ORDER_PATH=/instore/orders/qr/seller/collectors/138070335/pos/SUC001POS001/qrs
+            - MERCADO_PAGO_CONSULTAR_QR_ORDER_PATH=/merchant_orders/{0}
+            - MERCADO_PAGO_AUTHORIZATION=Bearer TEST-6884224062340548-071620-02c074eb2a97cad26e6f81bb405583ec-138070335
+            - MERCADO_PAGO_SPONSOR_ID=138070335
+            - WEBHOOK_ENDPOINT=https://webhook.site/938395c9-a04a-47f0-8e69-f7c60525bd34
         restart: always
         build:
           context: .
@@ -12,7 +18,6 @@ services:
         ports:
             - "5000:5000"
             - "5001:5001"
-
         depends_on:
             - ms-sql-server
 
@@ -27,3 +32,7 @@ services:
         volumes:
             - ./data:/var/opt/mssql/data
             - ./log:/var/opt/mssql/log
+
+networks:
+  default:
+    driver: bridge

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace API.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("pagamentos/")]
 
     [Produces("application/json")]
     [SwaggerResponse(204, "Requisição concluída sem dados de retorno.", null)]
@@ -31,7 +31,7 @@ namespace API.Controllers
             _pagamentoService = pagamentoService;
         }
 
-        // GET : /pagamento/{id}/status
+       
         [HttpGet("{idPedido}/status")]
         [SwaggerOperation(
             Summary = "Endpoint para obter o status do pagamento de um pedido",
@@ -46,7 +46,7 @@ namespace API.Controllers
         {
             try
             {
-                // Chamar o serviço para obter o status do pagamento
+                
                 PagamentoStatusOutput? statusPagamento = await _pagamentoService.GetStatusPagamento(idPedido);
 
                 if (statusPagamento is null)
@@ -56,12 +56,12 @@ namespace API.Controllers
             }
             catch (Exception)
             {
-                // Tratar outras exceções, se necessário
+               
                 return StatusCode(500, "Ocorreu um erro interno. Por favor, tente novamente mais tarde.");
             }
         }
 
-        // POST : /pagamento
+        
         [HttpPost]
         [SwaggerOperation(
             Summary = "Endpoint para processar o pagamento de um pedido",
@@ -80,7 +80,7 @@ namespace API.Controllers
         {
             try
             {
-                // Validação dos dados de entrada
+             
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
@@ -90,17 +90,17 @@ namespace API.Controllers
             }
             catch (Domain.Base.PreconditionFailedException ex)
             {
-                // Tratar a exceção aqui e retornar um BadRequest com a mensagem de erro personalizada
+                
                 return StatusCode(412, ex.Message);
             }
             catch (Exception)
             {
-                // Tratar outras exceções, se necessário
+               
                 return StatusCode(500, "Ocorreu um erro interno. Por favor, tente novamente mais tarde.");
             }
         }
 
-        // POST : /pagamento/webhook
+       
         [HttpPost("webhook")]
         [SwaggerOperation(
             Summary = "Endpoint para receber notificações de pagamento",
@@ -125,12 +125,12 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
-                // Tratar exceções, se necessário
+               
                 return StatusCode(500, $"Erro ao processar webhook: {ex.Message}");
             }
         }
 
-        // Get : /pagamento/idPedido/qrcode
+       
         [HttpGet("{idPedido}/qrcode")]
         [SwaggerOperation(
             Summary = "Endpoint para obter QRCode para pagamento de um pedido",
@@ -151,7 +151,7 @@ namespace API.Controllers
             }
             catch (Exception ex)
             {
-                // Tratar exceções, se necessário
+                
                 return StatusCode(500, $"Erro ao criar qrCode: {ex.Message}");
             }
         }
