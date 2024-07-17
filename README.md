@@ -64,6 +64,28 @@ Obtenha o QRCode para pagamento do pedido no Mercado Pago.
 
 ![Swagger](assets/imagem5.png)
 
+Acesse o site https://www.qrcode-monkey.com/ e gere a imagem utilizando o QR Code obtido no campo qr_data. Na página, selecione a aba TEXT, cole o QR Code no campo Your Text e clique no botão Create QR Code para criar a imagem correspondente.
+
+![QrCode](assets/imagem6.png)
+![QrCode](assets/imagem7.png)
+
+Ao ler  o qrCode no app do mercado pago
+
+![QrCode](assets/imagem8.png)
+
+Concluindo o pagamento
+![QrCode](assets/imagem9.png)
+![QrCode](assets/imagem10.png)
+
+
+Verifique a notificação recebida no Webhook.site e copie o id da merchant_order.
+
+![webhook](assets/imagem11.png)
+![webhook](assets/imagem12.png)
+
+Verifique novamente o status do pagamento do pedido como Aprovado.
+
+![webhook](assets/imagem13.png)
 
 </br>
 </br>
