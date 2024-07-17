@@ -64,6 +64,12 @@ Obtenha o QRCode para pagamento do pedido no Mercado Pago.
 
 ![Swagger](assets/imagem5.png)
 
+Acesse o site https://www.qrcode-monkey.com/ e gere a imagem utilizando o QR Code obtido no campo qr_data. Na página, selecione a aba TEXT, cole o QR Code no campo Your Text e clique no botão Create QR Code para criar a imagem correspondente.
+
+![QrCode](assets/imagem6.png)
+![QrCode](assets/imagem7.png)
+
+
 
 </br>
 </br>
