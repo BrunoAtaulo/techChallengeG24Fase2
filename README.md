@@ -146,16 +146,16 @@ Acesse o site https://www.qrcode-monkey.com/ e gere a imagem utilizando o QR Cod
 
 Ao ler  o qrCode no app do mercado pago
 
-![QrCode](assets/imagem8.png)
+![QrCode](assets/imagem8.png)</br>
 
 Concluindo o pagamento
-![QrCode](assets/imagem9.png)
+![QrCode](assets/imagem9.png)</br>
 ![QrCode](assets/imagem10.png)
 
 
 Verifique a notificação recebida no Webhook.site e copie o id da merchant_order.
 
-![webhook](assets/imagem11.png)
+![webhook](assets/imagem11.png)</br>
 ![webhook](assets/imagem12.png)
 
 Verifique novamente o status do pagamento do pedido como Aprovado.
