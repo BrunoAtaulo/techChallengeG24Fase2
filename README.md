@@ -24,18 +24,84 @@ Desenho com detalhes da infraestrutura do software
 
 ![Arquitetura](assets/diagrama.png)
 
-Para executar esta solução, você deve entrar na pasta raíz e executar o comando:
-```
-docker-compose up
-```
-Esse comando irá ler o arquivo <b>docker-compose.yml</b> que está na mesma pasta e criar os containers da API e do Banco de Dados SQL.
-</br>
 
-</br>
+
+Execute o Docker Engine.
+
+Abra um terminal e execute o comando iniciar o minikube:
+
+
+```
+minikube start
+
+```
+
+
+Também no terminal, acesse a pasta kubernetes no arquivo cmd_init.txt dentro do projeto e execute os comandos:
+
+```
+kubectl apply -f database-configMap.yaml
+kubectl apply -f database-pv.yaml
+kubectl apply -f database-pvc.yaml
+kubectl apply -f database-secrets.yaml
+kubectl apply -f database-service.yaml
+kubectl apply -f database-deployment.yaml
+kubectl apply -f app-configmap.yaml
+kubectl apply -f app-deployment.yaml
+kubectl apply -f app-hpa.yaml
+kubectl apply -f app-secrets.yaml
+kubectl apply -f app-service.yaml
+kubectl apply -f adminer-deployment.yaml
+kubectl apply -f adminer-service.yaml
+
+```
+
+Em seguida, execute o comando abaixo para habilitar a coleta de métricas no cluster:
+
+
+```
+minikube addons enable metrics-server
+
+```
+
+
+Execute o comando a seguir para visualizar os recursos criados no ambiente Kubernetes:
+
+
+```
+minikube dashboard
+
+```
+
+
+![kubernetes](assets/imagem15.png)
+
+
+Abra o terminal na pasta kubernetes e execute o comando abaixo para expor o Adminer na porta 8090:
+
+
+```
+
+kubectl port-forward svc/adminer 8090:8080
+
+```
+
+Acesse o Adminer no browser: http://localhost:8090/
+
+![sql](assets/imagem14.png)
+
+
+```
+Servidor: MS SQL (beta)
+Usuário: SA
+Senha: YourStrong!Passw0rd
+Base de Dados: LancheRapidoBD
+
+```
 
  
 </br>
-<b>Como acessar</b>:
+<b>Como acessar a API</b>:
 </br>
  
 <b>API</b>: http://localhost:5000/swagger/index.html
@@ -90,13 +156,10 @@ Verifique novamente o status do pagamento do pedido como Aprovado.
 </br>
 </br>
 
-```
-Servidor: localhost
-Usuário: SA
-Senha: Pa55w0rd2021
-Base de Dados: LancheRapidoBD
 
-```
+
+
+
 
 
 
