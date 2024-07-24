@@ -103,8 +103,17 @@ Base de Dados: LancheRapidoBD
 </br>
 <b>Como acessar a API</b>:
 </br>
+
+
+
+Abra outro terminal e execute o comando
+
+```
+kubectl port-forward svc/app 8080:80
+
+```
  
-<b>API</b>: http://localhost:5000/swagger/index.html
+<b>API</b>: http://localhost:8080/swagger/index.html
 </br>
 
 ![Swagger](assets/imagem1.png)
