@@ -18,7 +18,7 @@ Franciele RM 355456</br>
 Bruno - RM355476</br>
 Cesar P Moroni RM355921</br>
 
-## Desenho da arquiterura
+## Desenho da arquitetura
 
 Desenho com detalhes da infraestrutura do software
 
