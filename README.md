@@ -98,7 +98,7 @@ Senha: YourStrong!Passw0rd
 Base de Dados: LancheRapidoBD
 
 ```
-
+Importe o arquivo scriptInserts.sql que esta na pasta API e execute.
  
 </br>
 <b>Como acessar a API</b>:
