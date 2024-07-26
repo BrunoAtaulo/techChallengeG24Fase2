@@ -92,7 +92,7 @@ Acesse o Adminer no browser: http://localhost:8090/
 
 
 ```
-Servidor: MS SQL (beta)
+Servidor: sqlserver
 Usuário: SA
 Senha: YourStrong!Passw0rd
 Base de Dados: LancheRapidoBD
