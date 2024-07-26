@@ -12,7 +12,6 @@ VALUES
 ('89012345678', 'Paula', 'Mendes', 'paula.mendes8@example.com', 'Paula M.', GETDATE()),
 ('90123456789', 'Rafael', 'Costa', 'rafael.costa9@example.com', 'Rafael C.', GETDATE()),
 ('01234567890', 'Beatriz', 'Barbosa', 'beatriz.barbosa0@example.com', 'Beatriz B.', GETDATE());
-GO
 
 -- Inserir dados na tabela Combos
 INSERT INTO Combos (Nome)
@@ -27,22 +26,20 @@ VALUES
 ('Combo Chicken Nuggets'),
 ('Combo Hot Dog'),
 ('Combo BBQ Burger');
-GO
 
 -- Inserir dados na tabela Pedidos
-INSERT INTO Pedidos (ClienteId, PedidoStatusId, PedidoPagamentoId, DataPedido, DataAtualizacao)
+INSERT INTO Pedidos (ClienteId, PedidoStatusId, PedidoPagamentoId, DataPedido, DataAtualizacao, StatusPedido)
 VALUES
-(1, 1, 1, GETDATE(), NULL),
-(2, 2, 2, GETDATE(), NULL),
-(3, 3, 3, GETDATE(), NULL),
-(4, 1, 1, GETDATE(), NULL),
-(5, 2, 2, GETDATE(), NULL),
-(6, 3, 3, GETDATE(), NULL),
-(7, 1, 1, GETDATE(), NULL),
-(8, 2, 2, GETDATE(), NULL),
-(9, 3, 3, GETDATE(), NULL),
-(10, 1, 1, GETDATE(), NULL);
-GO
+(1, 1, 1, GETDATE(), NULL, 'Recebido'),
+(2, 2, 2, GETDATE(), NULL, 'Recebido'),
+(3, 3, 3, GETDATE(), NULL, 'Recebido'),
+(4, 1, 1, GETDATE(), NULL, 'Recebido'),
+(5, 2, 2, GETDATE(), NULL, 'Recebido'),
+(6, 3, 3, GETDATE(), NULL, 'Recebido'),
+(7, 1, 1, GETDATE(), NULL, 'Recebido'),
+(8, 2, 2, GETDATE(), NULL, 'Recebido'),
+(9, 3, 3, GETDATE(), NULL, 'Recebido'),
+(10, 1, 1, GETDATE(), NULL, 'Recebido');
 
 -- Inserir dados na tabela Produtos
 INSERT INTO Produtos (CategoriaId, Nome, Preco, Status, PedidoId)
@@ -91,7 +88,6 @@ VALUES
 (4, 'Cupcake', 3.00, 1, 8),
 (4, 'Milkshake de Morango', 5.00, 1, 9),
 (4, 'Banana Split', 6.50, 1, 10);
-GO
 
 
 -- Inserir dados na tabela ComboProdutos
@@ -137,7 +133,6 @@ VALUES
 (38, 8),
 (39, 9),
 (40, 10);
-GO
 
 -- Inserir dados na tabela PedidoProdutos
 INSERT INTO PedidoProdutos (Quantidade, ProdutoId, PedidoId, ComboId)
@@ -158,7 +153,7 @@ VALUES
 
 -- Inserir dados na tabela Pagamentos
 
-INSERT INTO Pagamento (StatusPagamento, ValorPagamento, MetodoPagamento, DataPagamento, IdPedido)
-VALUES ('Pendente', 1.00, 'QRCode', GETDATE(), 1);
-VALUES ('Pendente', 1.00, 'QRCode', GETDATE(), 2);
-VALUES ('Pendente', 1.00, 'QRCode', GETDATE(), 3);
+INSERT INTO Pagamentos (StatusPagamento, ValorPagamento, MetodoPagamento, DataPagamento, IdPedido)
+VALUES ('Pendente', 1.00, 'QRCode', GETDATE(), 1),
+ ('Pendente', 1.00, 'QRCode', GETDATE(), 2),
+ ('Pendente', 1.00, 'QRCode', GETDATE(), 3);
