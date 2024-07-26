@@ -18,7 +18,7 @@ Franciele RM 355456</br>
 Bruno - RM355476</br>
 Cesar P Moroni RM355921</br>
 
-## Desenho da arquiterura
+## Desenho da arquitetura
 
 Desenho com detalhes da infraestrutura do software
 
@@ -92,13 +92,13 @@ Acesse o Adminer no browser: http://localhost:8090/
 
 
 ```
-Servidor: MS SQL (beta)
+Servidor: sqlserver
 Usuário: SA
 Senha: YourStrong!Passw0rd
 Base de Dados: LancheRapidoBD
 
 ```
-
+Importe o arquivo scriptInserts.sql que esta na pasta API e execute.
  
 </br>
 <b>Como acessar a API</b>:
