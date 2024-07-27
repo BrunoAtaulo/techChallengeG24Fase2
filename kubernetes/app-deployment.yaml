@@ -57,11 +57,11 @@ spec:
             configMapKeyRef:
               name: app-config
               key: MERCADO_PAGO_SPONSOR_ID
-        # - name: WEBHOOK_ENDPOINT
-        #   valueFrom:
-        #     configMapKeyRef:
-        #       name: app-config
-        #       key: WEBHOOK_ENDPOINT
+        - name: WEBHOOK_ENDPOINT
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: WEBHOOK_ENDPOINT
         - name: DATABASE
           valueFrom:
             secretKeyRef:
