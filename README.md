@@ -4,7 +4,7 @@ API desenvolvida para controle de pedidos de uma lanchonete utilizando Kubernete
 
 
 - Miro: [Dashboard Miro](https://miro.com/app/board/uXjVKQl5ank=/?share_link_id=2259608060)
-- Vídeo: 
+- Vídeo: https://www.youtube.com/watch?v=9si3VwYQDNg
 
 
 ## Grupo 24 - Integrantes
@@ -56,13 +56,6 @@ kubectl apply -f adminer-service.yaml
 
 ```
 
-Em seguida, execute o comando abaixo para habilitar a coleta de métricas no cluster:
-
-
-```
-minikube addons enable metrics-server
-
-```
 
 
 Execute o comando a seguir para visualizar os recursos criados no ambiente Kubernetes:
@@ -98,7 +91,9 @@ Senha: YourStrong!Passw0rd
 Base de Dados: LancheRapidoBD
 
 ```
-Importe o arquivo scriptInserts.sql que esta na pasta API e execute.
+Importe o arquivo scriptInserts.sql que esta na pasta API e clique em executar.
+
+![adminer](assets/imagem16.png)
  
 </br>
 <b>Como acessar a API</b>:
